@@ -4,20 +4,28 @@ package com.revature.moneytracker.model;
 public class Product {
 	
 	private int id;
-	private String author;
+	private int authorID;
 	private String title;
 	private String category;
 	private String date;
-	private Double amount;
+	private double amount;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
+		super();
 	}
 	
-	public Product(int id, String author, String title, String category, String date, Double amount) {
-		super();
+	public Product(int authorID, String title, String category, String date, double amount) {
+		this.authorID = authorID;
+		this.title = title;
+		this.category = category;
+		this.date = date;
+		this.amount = amount;
+	}
+	
+	public Product(int id, int authorID, String title, String category, String date, double amount) {
 		this.id = id;
-		this.author = author;
+		this.authorID = authorID;
 		this.title = title;
 		this.category = category;
 		this.date = date;
@@ -31,11 +39,11 @@ public class Product {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getAuthor() {
-		return author;
+	public int getAuthorID() {
+		return authorID;
 	}
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setAuthorID(int authorID) {
+		this.authorID = authorID;
 	}
 	public String getTitle() {
 		return title;

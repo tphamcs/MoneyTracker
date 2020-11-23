@@ -9,4 +9,22 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>ServletLogin</servlet-name>
+    <servlet-class>com.revature.moneytracker.servlet.ServletLogin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletLogin</servlet-name>
+    <url-pattern>/login/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ServletProduct</display-name>
+    <servlet-name>ServletProduct</servlet-name>
+    <servlet-class>com.revature.moneytracker.servlet.ServletProduct</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletProduct</servlet-name>
+    <url-pattern>/ServletProduct</url-pattern>
+  </servlet-mapping>
 </web-app>
