@@ -9,8 +9,7 @@
 <body>
 
 	<div class="topnav">
-	  <a class="active" href="#home">Home</a>
-	  <a href="/moneytracker/login">Login</a>
+	  <a href="/moneytracker/login.jsp">Login</a>
 	</div>
 	
 	<h3>Welcome to Money Tracker</h3>

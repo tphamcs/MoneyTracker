@@ -7,7 +7,12 @@
 <title>Login Page</title>
 </head>
 <body>
+	<div class="topnav">
+	  <a href="/moneytracker/index.jsp">Home</a>
+	</div>
+	
    <h3>User Login</h3>
+   
    <form action="login" method="post">
 	   <table style="with: 100%">
 		    <tr>

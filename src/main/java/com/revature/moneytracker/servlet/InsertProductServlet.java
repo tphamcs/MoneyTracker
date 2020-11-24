@@ -1,31 +1,34 @@
 package com.revature.moneytracker.servlet;
 
 import java.io.IOException;
-
-import javax.management.relation.RoleNotFoundException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.apache.log4j.Logger;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.moneytracker.model.Product;
+import com.revature.moneytracker.model.User;
 import com.revature.moneytracker.service.ProductService;
 
 /**
- * Servlet implementation class ServletProduct
+ * Servlet implementation class InsertProductServlet
  */
-public class ServletProduct extends HttpServlet {
+public class InsertProductServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private ObjectMapper objectMapper = new ObjectMapper();
 	private ProductService productService = new ProductService();
+	
+	final static Logger logger = Logger.getLogger(InsertProductServlet.class);
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletProduct() {
+    public InsertProductServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,7 +38,7 @@ public class ServletProduct extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
@@ -44,18 +47,30 @@ public class ServletProduct extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		//Current user
-		int authorID = Integer.parseInt(request.getParameter("authorID"));
+		logger.info("InsertProductServlet's doPost() called");
 		
-		//Product fields
+		//Retriving current user from session
+		HttpSession session=request.getSession(false);
+		User user = (User) session.getAttribute("user"); 
+
+		
+		//Product fields value from dashboard.jsp
+		int authorID = user.getId();
         String title = request.getParameter("title");
         String category = request.getParameter("category");
         String date = request.getParameter("date");
-        double amount = Double.parseDouble(request.getParameter("amount"));
+        int amount = Integer.parseInt(request.getParameter("amount"));
         
 		try {
 			
+			//insert product to database
 			Product product = productService.insertProduct(authorID, title, category, date, amount);
+			
+			//set the response content type to JSON
+			response.setContentType("application/json");
+			response.setStatus(201);
+			//redirect back to dashboard
+			response.sendRedirect("createList.jsp");
 			
 		} catch (Exception e) {
 			response.setStatus(400);

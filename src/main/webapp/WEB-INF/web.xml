@@ -15,16 +15,36 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>ServletLogin</servlet-name>
-    <url-pattern>/login/*</url-pattern>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ServletProduct</display-name>
-    <servlet-name>ServletProduct</servlet-name>
-    <servlet-class>com.revature.moneytracker.servlet.ServletProduct</servlet-class>
+    <display-name>InsertProductServlet</display-name>
+    <servlet-name>InsertProductServlet</servlet-name>
+    <servlet-class>com.revature.moneytracker.servlet.InsertProductServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletProduct</servlet-name>
-    <url-pattern>/ServletProduct</url-pattern>
+    <servlet-name>InsertProductServlet</servlet-name>
+    <url-pattern>/insertProduct/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListProductServlet</display-name>
+    <servlet-name>ListProductServlet</servlet-name>
+    <servlet-class>com.revature.moneytracker.servlet.ListProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListProductServlet</servlet-name>
+    <url-pattern>/listProduct</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteProductServlet</display-name>
+    <servlet-name>DeleteProductServlet</servlet-name>
+    <servlet-class>com.revature.moneytracker.servlet.DeleteProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteProductServlet</servlet-name>
+    <url-pattern>/deleteProduct/*</url-pattern>
   </servlet-mapping>
 </web-app>

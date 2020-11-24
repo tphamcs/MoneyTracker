@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Admin Home</title>
+<title>Admin Dashboard</title>
 </head>
 <body>
-	<h3>Admin Home</h3>
+	<h3>Logging System</h3>
 
 </body>
 </html>

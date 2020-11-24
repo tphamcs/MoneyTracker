@@ -18,31 +18,31 @@ public class ProductDao {
 		// TODO Auto-generated constructor stub
 	}
 
-	//function get all product of each user
-	public ArrayList<Product> getAllProduct(User user) {
+	//all product of each user based on uid
+	public ArrayList<Product> getAllProduct(int uid) {
 		
-		String sqlQuery = "SELECT * "
-				+ "FROM product p "
-				+ "INNER JOIN users u "
-				+ "ON p.authorid = u.id";
-		
+		//ArrayList holding Product object	
 		ArrayList<Product> productList = new ArrayList<Product>();
-		
+
 		try (Connection connection = JDBCutility.getConnection()) {
 			
-			// Simple Statement, not to be confused Prepared Statement
-			Statement stmt = connection.createStatement(); 
-			ResultSet rs = stmt.executeQuery(sqlQuery);
+			String sqlQuery = "SELECT * FROM product p WHERE p.authorid = ?";
 			
+			PreparedStatement pstmt = connection.prepareStatement(sqlQuery);
+			pstmt.setInt(1, uid);
+			ResultSet rs = pstmt.executeQuery();
 			
+
 			while (rs.next()) {
+				
 				//getting all the value for each row of Product table
 				int id = rs.getInt(1);
-				int authorID = rs.getInt(2);
-				String title = rs.getString(3);
-				String category = rs.getString(4);
-				String date = rs.getString(5);
-				double amount = rs.getDouble(6);
+				String title = rs.getString(2);
+				String category = rs.getString(3);
+				String date = rs.getString(4);
+				int amount = rs.getInt(5);
+				int authorID = rs.getInt(6);
+				
 				//creating product object
 				Product product = new Product(id, authorID, title, category, date, amount);
 				//adding each object to the List
@@ -61,14 +61,14 @@ public class ProductDao {
 	/**
 	 * @return Pirate or null
 	 */
-	public Product insertProduct(int authorID, String title, String category, String date, double amount) 
+	public Product insertProduct(int authorID, String title, String category, String date, int amount) 
 	{
 		try (Connection connection = JDBCutility.getConnection()) {
 			
 			connection.setAutoCommit(false);
 			
 			String sqlQuery = "INSERT INTO product "
-					+ "(authorID, title, category, date, amount) "
+					+ "(authorid, title, category, date, amount) "
 					+ "VALUES "
 					+ "(?, ?, ?, ?, ?)";
 			
@@ -78,18 +78,10 @@ public class ProductDao {
 			pstmt.setString(2, title);
 			pstmt.setString(3, category);
 			pstmt.setString(4, date);
-			pstmt.setDouble(5, amount);
+			pstmt.setInt(5, amount);
 			
 			if (pstmt.executeUpdate() != 1) {
-				throw new SQLException("Inserting pirate failed, no rows were affected");
-			}
-			
-			int autoId = 0;
-			ResultSet generatedKeys = pstmt.getGeneratedKeys();
-			if (generatedKeys.next()) {
-				autoId = generatedKeys.getInt(1);
-			} else {
-				throw new SQLException("Inserting pirate failed, no ID generated");
+				throw new SQLException("Inserting failed");
 			}
 			
 			connection.commit();
@@ -108,8 +100,33 @@ public class ProductDao {
 	/**
 	 * @return Pirate or null
 	 */
-	public Product deleteProduct() {
-		return null;
+	public void deleteProduct(int pid) {
+		
+		try (Connection connection = JDBCutility.getConnection()) {
+			
+			connection.setAutoCommit(false);
+
+			String sqlQuery = "DELETE from product p where p.id = ?";
+			
+			PreparedStatement pstmt = connection.prepareStatement(sqlQuery);
+			
+			pstmt.setInt(1, pid);
+
+			
+			if (pstmt.executeUpdate() != 1) {
+				throw new SQLException("Delete failed");
+			}
+					
+			
+			System.out.println("Delete sucessfully!");
+			
+			connection.commit();
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 	

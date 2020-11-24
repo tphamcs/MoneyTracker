@@ -8,14 +8,14 @@ public class Product {
 	private String title;
 	private String category;
 	private String date;
-	private double amount;
+	private int amount;
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
 		super();
 	}
 	
-	public Product(int authorID, String title, String category, String date, double amount) {
+	public Product(int authorID, String title, String category, String date, int amount) {
 		this.authorID = authorID;
 		this.title = title;
 		this.category = category;
@@ -23,7 +23,7 @@ public class Product {
 		this.amount = amount;
 	}
 	
-	public Product(int id, int authorID, String title, String category, String date, double amount) {
+	public Product(int id, int authorID, String title, String category, String date, int amount) {
 		this.id = id;
 		this.authorID = authorID;
 		this.title = title;
@@ -63,10 +63,10 @@ public class Product {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public Double getAmount() {
+	public int getAmount() {
 		return amount;
 	}
-	public void setAmount(Double amount) {
+	public void setAmount(int amount) {
 		this.amount = amount;
 	}
 	
