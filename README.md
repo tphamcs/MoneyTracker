@@ -8,21 +8,21 @@ This application was created using: Java 8, JDBC, Servlets, Tomcat 8.5, PostgreS
 # Endpoints
 
 ## POST /login
-  Authentication based on username and password
+  Authentication based on username and password.
   
 ## GET /logout
   Removing session 'user' and redirect back to login.jsp
 
 ## POST /insertProduct
-  Insert items into 'product' table  
+  Insert items into 'product' table.  
   productService.insertProduct(uid, "Burger", "Food", "11/22/2020", 10)
   
 ## POST /deleteProduct
-  Insert items into 'product' table  
+  Delete items from 'product' table.  
   productService.deleteProduct(pid);
   
 ## GET /listProduct
-  Retriving all items belong to current user  
+  Retriving all items belong to current user.  
   productService.getAllProduct(uid);
   
 # How to Startup the Application
