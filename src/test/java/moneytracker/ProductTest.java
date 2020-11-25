@@ -39,7 +39,7 @@ public class ProductTest {
 	  }
 
 	  @Test
-	  public void testGetAllBooks() throws Exception {
+	  public void testGetAllProduct() throws Exception {
 		  
 	    ArrayList<Product> productList = mockProductDao.getAllProduct(uid);
 	    

@@ -1,0 +1,27 @@
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(255) not null,
+	role VARCHAR(255) NOT null,
+	username VARCHAR(255) NOT null,
+	password VARCHAR(255) NOT null
+);
+
+INSERT INTO users 
+(name, role, username, password)
+VALUES
+('User 1', 'regular_user', 'user1', '1234'),
+('Admin 1', 'admin', 'admin1', '1234');
+
+
+DROP TABLE IF EXISTS product;
+CREATE TABLE product (
+	id SERIAL PRIMARY KEY,
+	title VARCHAR(255) NOT null,
+	category VARCHAR(255) NOT null,
+	date VARCHAR(255) NOT null,
+	amount int NOT null,
+	authorID int NOT null
+);
+
+
