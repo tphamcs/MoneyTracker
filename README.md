@@ -1,7 +1,7 @@
 # MoneyTracker
 
 # Product description
-This application is a budget management. It allow user to create a tracking list by adding product items as well as remove, update and retrieve their information. 
+This application is a budget management app. It allow user to create a tracking list by adding product items as well as remove, update and retrieve their information. 
 
 This application was created using: Java 8, JDBC, Servlets, Tomcat 8.5, PostgreSQL, JUnit, Maven, AWS RDS....
 
