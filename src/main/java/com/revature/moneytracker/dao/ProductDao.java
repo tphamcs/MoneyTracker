@@ -115,10 +115,7 @@ public class ProductDao {
 			
 			if (pstmt.executeUpdate() != 1) {
 				throw new SQLException("Delete failed");
-			}
-					
-			
-			System.out.println("Delete sucessfully!");
+			}	
 			
 			connection.commit();
 			

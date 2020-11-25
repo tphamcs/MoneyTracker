@@ -61,21 +61,20 @@ public class ServletLogin extends HttpServlet {
             User user = userDao.checkLogin(username, password);
              
             //if user found
-            if (user != null) {
+            if (user != null) {            	
+            	
+            	//creating session to store User object, this can be used as Global user
+        		HttpSession session = request.getSession();
+                session.setAttribute("user", user);
+                
             	//validating user based on their role
             	if (user.getRole().equals("regular_user")){
             		
-            		//creating session to store User object, this can be used as Global user
-            		HttpSession session = request.getSession();
-                    session.setAttribute("user", user);
-                    
-                    //should redirect to listProduct servlet first
-                    //since this function will grab all the current user database
             		response.sendRedirect("dashboard.jsp");
             		
             	} else if (user.getRole().equals("admin")) {
             		
-            		response.sendRedirect("adminhome.jsp");
+            		response.sendRedirect("adminDashboard.jsp");
 				}
             	         	
             } else {       	

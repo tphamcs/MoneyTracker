@@ -13,9 +13,10 @@
 
 	<div class="topnav">
 	  <a href="/moneytracker/dashboard.jsp">Dashboard</a>
+	  <a href="/moneytracker/logout">Logout</a>
 	</div>
 	
-	<p>What product have you purchased recently!</p>
+	<p>What product have you purchased?</p>
 	<form action="insertProduct" method="post">
 		<table>
 			<tr>

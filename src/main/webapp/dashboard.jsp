@@ -16,6 +16,7 @@
 	<div class="topnav">
 	  <a href="/moneytracker/dashboard.jsp">Dashboard</a>
 	  <a href="/moneytracker/createList.jsp">Create</a>
+	  <a href="/moneytracker/logout">Logout</a>
 	</div>
 	
 	<h3>Dashboard</h3>
@@ -23,12 +24,16 @@
 			
 	<% 
 		ArrayList<Product> listProduct =  (ArrayList<Product>) request.getAttribute("listProduct");
-		if (listProduct.isEmpty()) { %>
+		int count = 0;
+	%>	
+	
+	<% 	if (listProduct.isEmpty()) { %>
 		
 		<p> Nothing found. Please "Create" your tracking list  </p> 
 			
 	<%	} else { %>
 			<table>
+			
 				<tr>
 					<th>ID</th>	
 					<th>Title</th>
@@ -38,8 +43,8 @@
 					<th></th>
 				</tr>
 				
-				<%for (Product p : listProduct) {%>
-					     
+				
+				<%for (Product p : listProduct) {%>					     
 					<tr>
 				        <td><%=p.getId()%></td>
 				        <td><%=p.getTitle()%></td>
@@ -47,8 +52,17 @@
 				        <td><%=p.getDate()%></td>
 				        <td>$ <%=p.getAmount()%></td>
 				        <td><a href="/moneytracker/deleteProduct?id=<%=p.getId()%>">Delete</a></td>
-			    	</tr>		
+			    	</tr>			    	
+			    	<% count += p.getAmount(); %>	
 		   		<%}%>
+		   			
+		   		<tr>
+		   			<td></td>
+		   			<td></td>
+		   			<td></td>
+		   			<td></td>
+		   			<td><b>You Spent: $ <%=count%></b></td>
+		   		</tr>
 		   		
 		   	</table>
    		<%}%>

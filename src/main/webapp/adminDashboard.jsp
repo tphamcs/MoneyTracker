@@ -7,6 +7,11 @@
 <title>Admin Dashboard</title>
 </head>
 <body>
+	<div class="topnav">
+	  <a href="/moneytracker/adminDashboard.jsp">Dashboard</a>
+	  <a href="/moneytracker/logout">Logout</a>
+	</div>
+	
 	<h3>Logging System</h3>
 
 </body>
