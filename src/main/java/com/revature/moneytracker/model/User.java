@@ -4,7 +4,9 @@ public class User {
 	
 	private int id;
 	private String name; //instance
+	private String username;
 	private String role;
+	private String email;
 	
 	
 	public User() {
@@ -17,12 +19,13 @@ public class User {
 		this.role = role;
 	}
 	
-	public User(int id, String name, String role) {
-		this.id = id;
+	public User(String name, String role, String email, String username) {
 		this.name = name;
 		this.role = role;
+		this.email = email;
+		this.username = username;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
@@ -46,5 +49,24 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	
+	
 	
 }

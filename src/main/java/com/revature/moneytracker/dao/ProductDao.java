@@ -37,11 +37,12 @@ public class ProductDao {
 				
 				//getting all the value for each row of Product table
 				int id = rs.getInt(1);
-				String title = rs.getString(2);
-				String category = rs.getString(3);
-				String date = rs.getString(4);
-				int amount = rs.getInt(5);
-				int authorID = rs.getInt(6);
+				int authorID = rs.getInt(2);
+				String title = rs.getString(3);
+				String category = rs.getString(4);
+				String date = rs.getString(5);
+				int amount = rs.getInt(6);
+				
 				
 				//creating product object
 				Product product = new Product(id, authorID, title, category, date, amount);

@@ -3,25 +3,26 @@ CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR(255) not null,
 	role VARCHAR(255) NOT null,
+	email VARCHAR(255) NOT null,
 	username VARCHAR(255) NOT null,
 	password VARCHAR(255) NOT null
 );
 
 INSERT INTO users 
-(name, role, username, password)
+(name, role, email, username, password)
 VALUES
-('User 1', 'regular_user', 'user1', '1234'),
-('Admin 1', 'admin', 'admin1', '1234');
+('Thanh Pham', 'authenticated', 'thanhpham@revature.com', 'user1', '1234'),
+('Admin 1', 'admin', 'admin@revature.com', 'admin1', '1234');
 
 
 DROP TABLE IF EXISTS product;
 CREATE TABLE product (
 	id SERIAL PRIMARY KEY,
+	authorID int NOT null,
 	title VARCHAR(255) NOT null,
 	category VARCHAR(255) NOT null,
 	date VARCHAR(255) NOT null,
-	amount int NOT null,
-	authorID int NOT null
+	amount int NOT null
 );
 
 

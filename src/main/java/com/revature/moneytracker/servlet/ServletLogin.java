@@ -68,7 +68,7 @@ public class ServletLogin extends HttpServlet {
                 session.setAttribute("user", user);
                 
             	//validating user based on their role
-            	if (user.getRole().equals("regular_user")){
+            	if (user.getRole().equals("authenticated")){
             		
             		response.sendRedirect("dashboard.jsp");
             		

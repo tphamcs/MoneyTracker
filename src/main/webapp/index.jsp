@@ -10,6 +10,7 @@
 
 	<div class="topnav">
 	  <a href="/moneytracker/login.jsp">Login</a>
+	  <a href="/moneytracker/signup.jsp">Sign Up</a>
 	</div>
 	
 	<h3>Welcome to Money Tracker</h3>
