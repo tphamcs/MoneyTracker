@@ -43,26 +43,28 @@ public class ListProductServlet extends HttpServlet {
 		
 		logger.info("ListProductServlet's doGet() called");
 		
+		int uid = Integer.parseInt(request.getParameter("uid"));
+		
 		try {
-			
+
 			//Retriving current user from session
-			HttpSession session=request.getSession(false);
-			User user = (User) session.getAttribute("user");
+			//HttpSession session=request.getSession(false);
+			//User user = (User) session.getAttribute("user");
 			
 			//get all Product of current user
-			ArrayList<Product> listProduct = productService.getAllProduct(user.getId());
+			ArrayList<Product> listProduct = productService.getAllProduct(uid);
 			
 			//send listProduct object to jsp page
-			request.setAttribute("listProduct", listProduct);
-			request.getRequestDispatcher("dashboard.jsp").forward(request, response); 
+			//request.setAttribute("listProduct", listProduct);
+			//request.getRequestDispatcher("dashboard.jsp").forward(request, response); 
 			
 			
 			//set the response content type to JSON
-			//convert response object to json
-//	        int uid = Integer.parseInt(request.getParameter("id"));
-//			String jsonString = objectMapper.writeValueAsString(productService.getAllProduct(uid));
-//			response.getWriter().append(jsonString);
-		
+			//convert response object to json	    			
+			String listProductJSON = objectMapper.writeValueAsString(listProduct);
+			
+			response.getWriter().append(listProductJSON);
+			//set the response content type to JSON
 			response.setContentType("application/json");
 			response.setStatus(201);
 

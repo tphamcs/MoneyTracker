@@ -50,12 +50,12 @@ public class InsertProductServlet extends HttpServlet {
 		logger.info("InsertProductServlet's doPost() called");
 		
 		//Retriving current user from session
-		HttpSession session=request.getSession(false);
-		User user = (User) session.getAttribute("user"); 
+		//HttpSession session=request.getSession(false);
+		//User user = (User) session.getAttribute("user"); 
 
 		
 		//Product fields value from dashboard.jsp
-		int authorID = user.getId();
+		int authorID = 1;
         String title = request.getParameter("title");
         String category = request.getParameter("category");
         String date = request.getParameter("date");
@@ -65,12 +65,13 @@ public class InsertProductServlet extends HttpServlet {
 			
 			//insert product to database
 			Product product = productService.insertProduct(authorID, title, category, date, amount);
+			String insertedProductJSON = objectMapper.writeValueAsString(product);
 			
+			response.getWriter().append(insertedProductJSON);
 			//set the response content type to JSON
 			response.setContentType("application/json");
 			response.setStatus(201);
-			//redirect back to dashboard
-			response.sendRedirect("createList.jsp");
+
 			
 		} catch (Exception e) {
 			response.setStatus(400);

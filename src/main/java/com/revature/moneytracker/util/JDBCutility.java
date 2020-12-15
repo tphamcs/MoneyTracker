@@ -50,9 +50,9 @@ public class JDBCutility {
 		 * Ideally we should store them in url, username, password, in environment variables
 		 */
 		
-		String url = System.getenv("DB_URL");
-		String username = System.getenv("DB_USERNAME");
-		String password = System.getenv("DB_PASSWORD");
+		String url = "jdbc:postgresql://database-1.cyyxvhocwqnw.us-east-2.rds.amazonaws.com:5432/postgres";
+		String username = "postgres";
+		String password = "Tp9705824";
 		
 		Connection connection = null;
 		

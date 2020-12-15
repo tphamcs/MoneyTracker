@@ -42,8 +42,8 @@ public class DeleteProductServlet extends HttpServlet {
 		logger.info("DeleteProductServlet's doGet() called");
 		
 		//Retriving current user from session
-		HttpSession session=request.getSession(false);
-		User user = (User) session.getAttribute("user"); 
+		//HttpSession session=request.getSession(false);
+		//User user = (User) session.getAttribute("user"); 
 
 		
 		//getting product id we want to delete from url
@@ -54,11 +54,6 @@ public class DeleteProductServlet extends HttpServlet {
 			//callubg delete product from service layer
 			productService.deleteProduct(pid);
 			
-			//set the response content type to JSON
-			response.setContentType("application/json");
-			response.setStatus(201);
-			//redirect back to dashboard
-			response.sendRedirect("dashboard.jsp");
 			
 		} catch (Exception e) {
 			response.setStatus(400);
